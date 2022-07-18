@@ -3,10 +3,10 @@
 <?= $this->section('content') ?>
 
     <div class="pagetitle">
-        <h1>User</h1>
+        <h1>Jabatan</h1>
         <nav class="d-flex justify-content-end">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active">User</li>
+                <li class="breadcrumb-item active">Jabatan</li>
             </ol>
         </nav>
     </div>
@@ -15,32 +15,28 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Users</h5>
-                        <a href="<?=base_url('/user/create')?>" class="btn btn-primary btn-sm mb-3">Create User</a>
+                        <h5 class="card-title">Jabatan</h5>
+                        <a href="<?=base_url('/jabatan/create')?>" class="btn btn-primary btn-sm mb-3">Create Jabatan</a>
                         <div class="table-responsive">
                             <table class="table table-stripped table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>Code User</th>
-                                        <th>NIK</th>
-                                        <th>Username</th>
-                                        <th>Role</th>
+                                        <th>Code Jabatan</th>
+                                        <th>Jabatan</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php if (sizeof($users) > 0) : ?>
-                                        <?php foreach ($users as $user) : ?>
+                                    <?php if (sizeof($jabatan) > 0) : ?>
+                                        <?php foreach ($jabatan as $jabatan) : ?>
                                             <tr>
-                                                <td><?= $user['code_user'] ?></td>
-                                                <td><?= $user['nik'] ?></td>
-                                                <td><?= $user['username'] ?></td>
-                                                <td><?= \App\Models\Users\UsersModel::getRole($user['role_id']) ?></td>
+                                                <td><?= $jabatan['code_role'] ?></td>
+                                                <td><?= $jabatan['name'] ?></td>
                                                 <td>
-                                                    <a href="<?= base_url("user/{$user['id']}") ?>" data-bs-toggle="tooltip" data-bs-placement="top" title="View User" data-bs-original-title="View User">
+                                                    <a href="<?= base_url("jabatan/{$jabatan['id']}") ?>" data-bs-toggle="tooltip" data-bs-placement="top" title="View Jabatan" data-bs-original-title="View Jabatan">
                                                         <i class="bi bi-eye"></i>
                                                     </a>
-                                                    <a href="<?= base_url("user/edit/{$user['id']}") ?>" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit User" data-bs-original-title="Edit User">
+                                                    <a href="<?= base_url("jabatan/edit/{$jabatan['id']}") ?>" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Jabatan" data-bs-original-title="Edit Jabatan">
                                                         <i class="bi bi-pencil"></i>
                                                     </a>
                                                 </td>
@@ -48,7 +44,7 @@
                                         <?php endforeach; ?>
                                     <?php else : ?>
                                         <tr>
-                                            <td colspan="4">No data found</td>
+                                            <td colspan="2">No data found</td>
                                         </tr>
                                     <?php endif; ?>
                                 </tbody>

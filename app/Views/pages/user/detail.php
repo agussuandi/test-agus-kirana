@@ -12,7 +12,8 @@
         </nav>
     </div>
     <section class="section">
-        <form>
+        <form action="<?= base_url("/user/{$user['id']}") ?>" method="POST">
+            <input type="hidden" name="_method" value="DELETE" />
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">User <?=$user['username']?></h5>
@@ -43,6 +44,7 @@
                 </div>
                 <div class="card-footer">
                     <a href="<?= base_url('/user') ?>" class="btn btn-warning">Kembali</a>
+                    <button type="submit" class="btn btn-danger">Delete</button>
                 </div>
             </div>
         </form>

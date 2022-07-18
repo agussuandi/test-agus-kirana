@@ -4,7 +4,9 @@ namespace App\Controllers\User;
 
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\RequestInterface;
+
 use Config\Database;
+use Config\AppHelper;
 
 use App\Models\Users\UsersModel;
 use App\Models\Jabatan\JabatanModel;
@@ -30,6 +32,41 @@ class UserController extends BaseController
         catch (\Throwable $th)
         {
             print_r($th->getMessage()); die();
+        }
+    }
+
+    public function create()
+    {
+        try
+        {
+            return view("{$this->prefixView}/create", [
+                'users'   => $this->users->findAll(),
+                'jabatan' => $this->jabatan->findAll()
+            ]);
+        }
+        catch (\Throwable $th)
+        {
+            print_r($th->getMessage()); die();
+        }
+    }
+
+    public function store()
+    {
+        try
+        {
+            $data = [
+                'code_user' => AppHelper::codeUserInc(),
+                'nik'       => $this->request->getPost('nik'),
+                'username'  => $this->request->getPost('username'),
+                'role_id'   => $this->request->getPost('role')
+            ];
+
+            $this->users->insert($data);
+            return redirect()->to(base_url('user'))->with('success', 'Berhasil menambah data');
+        }
+        catch (\Throwable $th)
+        {
+            return redirect()->to(base_url('user'))->with('warning', 'Gagal menambah data');
         }
     }
 
@@ -73,12 +110,24 @@ class UserController extends BaseController
             ];
 
             $this->users->update($id, $data);
-
             return redirect()->to(base_url('user'))->with('success', 'Berhasil mengubah data');
         }
         catch (\Throwable $th)
         {
             return redirect()->to(base_url('user'))->with('warning', 'Gagal mengubah data');
+        }
+    }
+
+    public function destroy($id)
+    {
+        try
+        {
+            $this->users->delete($id);
+            return redirect()->to(base_url('user'))->with('success', 'Berhasil menghapus data');
+        }
+        catch (\Throwable $th)
+        {
+            return redirect()->to(base_url('user'))->with('warning', 'Gagal menghapus data');
         }
     }
 }

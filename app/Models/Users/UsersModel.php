@@ -15,17 +15,7 @@ class UsersModel extends Model
     protected $useAutoIncrement = true;
     protected $returnType     = 'array';
     
-    // protected $useSoftDeletes = true;
-
-    protected $allowedFields = ['name', 'nik', 'role_id'];
-
-    // protected $createdField  = 'created_at';
-    // protected $updatedField  = 'updated_at';
-    // protected $deletedField  = 'deleted_at';
-
-    // protected $validationRules    = [];
-    // protected $validationMessages = [];
-    // protected $skipValidation     = false;
+    protected $allowedFields = ['name', 'username', 'code_user', 'nik', 'role_id'];
 
     public static function getRole($id): string
     {

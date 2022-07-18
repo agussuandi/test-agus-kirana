@@ -7,32 +7,25 @@
         <nav class="d-flex justify-content-end">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?=base_url('/user')?>">User</a></li>
-                <li class="breadcrumb-item active">Edit User</li>
+                <li class="breadcrumb-item active">Create User</li>
             </ol>
         </nav>
     </div>
     <section class="section">
-        <form action="<?= base_url("/user/{$user['id']}") ?>" method="POST">
-            <input type="hidden" name="_method" value="PUT" />
+        <form action="<?= base_url("/user") ?>" method="POST">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">User <?=$user['username']?></h5>
-                    <div class="row mb-3">
-                        <label for="inputText" class="col-sm-2 col-form-label">Code User</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" disabled value="<?=$user['code_user']?>" />
-                        </div>
-                    </div>
+                    <h5 class="card-title">Create User</h5>
                     <div class="row mb-3">
                         <label for="inputText" class="col-sm-2 col-form-label">NIK</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="nik" name="nik" value="<?=$user['nik']?>" />
+                            <input type="text" class="form-control" id="nik" name="nik" />
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="inputText" class="col-sm-2 col-form-label">Username</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="username" name="username" value="<?=$user['username']?>" />
+                            <input type="text" class="form-control" id="username" name="username" />
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -41,9 +34,7 @@
                             <select class="form-control" id="role" name="role">
                                 <option value="" disabled selected>Pilih Role</option>
                                 <?php foreach($jabatan as $jabatan) : ?>
-                                    <option value="<?=$jabatan['id']?>" <?=$jabatan['id'] === $user['role_id'] ? 'selected' : ''?>>
-                                        <?=$jabatan['name']?>
-                                    </option>
+                                    <option value="<?=$jabatan['id']?>"><?=$jabatan['name']?></option>
                                 <?php endforeach;?>
                             </select>
                         </div>

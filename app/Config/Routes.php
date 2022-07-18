@@ -37,9 +37,20 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'User\UserController::index');
 $routes->get('/user', 'User\UserController::index');
+$routes->post('/user', 'User\UserController::store');
+$routes->get('/user/create', 'User\UserController::create');
 $routes->get('/user/(:num)', 'User\UserController::show/$1');
 $routes->get('/user/edit/(:num)', 'User\UserController::edit/$1');
 $routes->put('/user/(:num)', 'User\UserController::update/$1');
+$routes->delete('/user/(:num)', 'User\UserController::destroy/$1');
+
+$routes->get('/jabatan', 'Jabatan\JabatanController::index');
+$routes->get('/jabatan/create', 'Jabatan\JabatanController::create');
+$routes->post('/jabatan', 'Jabatan\JabatanController::store');
+$routes->get('/jabatan/(:num)', 'Jabatan\JabatanController::show/$1');
+$routes->get('/jabatan/edit/(:num)', 'Jabatan\JabatanController::edit/$1');
+$routes->put('/jabatan/(:num)', 'Jabatan\JabatanController::update/$1');
+$routes->delete('/jabatan/(:num)', 'Jabatan\JabatanController::destroy/$1');
 
 /*
  * --------------------------------------------------------------------
