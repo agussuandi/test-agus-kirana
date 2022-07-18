@@ -23,7 +23,7 @@
     <link href="<?= base_url('assets/vendor/remixicon/remixicon.css') ?>" rel="stylesheet">
     <link href="<?= base_url('assets/vendor/simple-datatables/style.css') ?>" rel="stylesheet">
 
-    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="<?= base_url('assets/css/style.css') ?>" rel="stylesheet">
 </head>
 
 <body>
@@ -31,6 +31,7 @@
     <?= $this->include('layouts/sidebar') ?>
 
     <main id="main" class="main">
+        <?= $this->include('layouts/message') ?>
         <?= $this->renderSection('content') ?>
     </main>
 
@@ -38,7 +39,7 @@
 
     <script src="<?= base_url('assets/vendor/apexcharts/apexcharts.min.js') ?>"></script>
     <script src="<?= base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
-    <script src="<?= base_url('assets/vendor/chart.js') ?>/chart.min.js') ?>"></script>
+    <script src="<?= base_url('assets/vendor/chart.js/chart.min.js') ?>"></script>
     <script src="<?= base_url('assets/vendor/echarts/echarts.min.js') ?>"></script>
     <script src="<?= base_url('assets/vendor/quill/quill.min.js') ?>"></script>
     <script src="<?= base_url('assets/vendor/simple-datatables/simple-datatables.js') ?>"></script>

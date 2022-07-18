@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Models\Users;
+namespace App\Models\Jabatan;
 
 use CodeIgniter\Model;
 
-use App\Models\Jabatan\JabatanModel;
-
-class UsersModel extends Model
+class JabatanModel extends Model
 {
-    protected $table      = 'm_users';
+    protected $table      = 'm_jabatan';
     protected $primaryKey = 'id';
     protected $useTimestamps = false;
 
@@ -17,7 +15,7 @@ class UsersModel extends Model
     
     // protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['name', 'nik', 'role_id'];
+    // protected $allowedFields = ['name', 'email'];
 
     // protected $createdField  = 'created_at';
     // protected $updatedField  = 'updated_at';
@@ -26,12 +24,4 @@ class UsersModel extends Model
     // protected $validationRules    = [];
     // protected $validationMessages = [];
     // protected $skipValidation     = false;
-
-    public static function getRole($id): string
-    {
-        $jabatan = new JabatanModel();
-        $jabatan = $jabatan->find($id);
-
-        return $jabatan['name'] ?? '-';
-    }
 }
