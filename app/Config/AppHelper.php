@@ -32,4 +32,20 @@ class AppHelper extends BaseConfig
 
         return $lastCode; 
     }
+
+    public static function sendRequest($uri)
+    {
+        if (!filter_var($uri, FILTER_VALIDATE_URL)) return false;
+    
+        $curl = curl_init($uri);
+        
+        curl_setopt($curl,CURLOPT_CONNECTTIMEOUT,10);
+        curl_setopt($curl,CURLOPT_HEADER,true);
+        curl_setopt($curl,CURLOPT_NOBODY,true);
+        curl_setopt($curl,CURLOPT_RETURNTRANSFER,true);
+        $response = curl_exec($curl);
+        curl_close($curl);
+    
+        return $response ? true : false;
+    }
 }

@@ -50,8 +50,8 @@ class JabatanController extends BaseController
         try
         {
             $data = [
-                'code_role' => AppHelper::codeJabatanInc(),
-                'name'      => $this->request->getPost('role')
+                'name'         => $this->request->getPost('role'),
+                'code_jabatan' => AppHelper::codeJabatanInc()
             ];
 
             $this->jabatan->insert($data);

@@ -13,5 +13,5 @@ class JabatanModel extends Model
     protected $useAutoIncrement = true;
     protected $returnType     = 'array';
     
-    protected $allowedFields = ['name', 'code_role'];
+    protected $allowedFields = ['name', 'code_jabatan'];
 }

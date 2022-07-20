@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use CodeIgniter\HTTP\RequestInterface;
 
 use Config\Database;
+use Config\AppHelper;
 
 use App\Models\LogApi\LogApiModel;
 use App\Models\Server\ServerModel;
@@ -22,7 +23,7 @@ class CheckServerController extends BaseController
     {
         try
         {
-            if ($_GET['username'] !== 'km' && $_GET['password'] !== 123)
+            if ((string)$_GET['username'] !== 'km' || (int)$_GET['password'] !== 1234)
             {
                 return $this->response->setJSON([
                     'status'  => false,
@@ -48,6 +49,18 @@ class CheckServerController extends BaseController
                         'noHandphone' => "Mengirim SMS {$_GET['hp']}"
                     ];
                 }
+            }
+
+            #Pak, ini saya tambahkan fungsi yang kurang mengecek melalui curl.
+            $uri = 'http://sms.getway.com/send.php';
+            if (!AppHelper::sendRequest($uri))
+            {
+                $serverDies[] = [
+                    'serverIp'    => $uri,
+                    'serverName'  => $uri,
+                    'message'     => "Server {$uri} sedang off",
+                    'noHandphone' => "Mengirim SMS {$_GET['hp']}"
+                ];
             }
             
             return $this->response->setJSON([

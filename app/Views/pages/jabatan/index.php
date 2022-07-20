@@ -30,7 +30,7 @@
                                     <?php if (sizeof($jabatan) > 0) : ?>
                                         <?php foreach ($jabatan as $jabatan) : ?>
                                             <tr>
-                                                <td><?= $jabatan['code_role'] ?></td>
+                                                <td><?= $jabatan['code_jabatan'] ?></td>
                                                 <td><?= $jabatan['name'] ?></td>
                                                 <td>
                                                     <a href="<?= base_url("jabatan/{$jabatan['id']}") ?>" data-bs-toggle="tooltip" data-bs-placement="top" title="View Jabatan" data-bs-original-title="View Jabatan">
