@@ -55,10 +55,10 @@ class UserController extends BaseController
         try
         {
             $data = [
-                'code_user' => AppHelper::codeUserInc(),
-                'nik'       => $this->request->getPost('nik'),
-                'username'  => $this->request->getPost('username'),
-                'role_id'   => $this->request->getPost('role')
+                'code_user'=> AppHelper::codeUserInc(),
+                'nik'      => $this->request->getPost('nik'),
+                'username' => $this->request->getPost('username'),
+                'role'     => $this->request->getPost('role')
             ];
 
             $this->users->insert($data);
@@ -89,8 +89,7 @@ class UserController extends BaseController
         try
         {
             return view("{$this->prefixView}/update", [
-                'user'    => $this->users->find($id),
-                'jabatan' => $this->jabatan->findAll()
+                'user'    => $this->users->find($id)
             ]);
         }
         catch (\Throwable $th)
@@ -104,9 +103,9 @@ class UserController extends BaseController
         try
         {
             $data = [
-                'nik'       => $this->request->getPost('nik'),
-                'username'  => $this->request->getPost('username'),
-                'role_id'   => $this->request->getPost('role')
+                'nik'      => $this->request->getPost('nik'),
+                'username' => $this->request->getPost('username'),
+                'role'     => $this->request->getPost('role')
             ];
 
             $this->users->update($id, $data);
@@ -128,6 +127,32 @@ class UserController extends BaseController
         catch (\Throwable $th)
         {
             return redirect()->to(base_url('user'))->with('warning', 'Gagal menghapus data');
+        }
+    }
+
+    public function userJson($id)
+    {
+        try
+        {
+            $user = $this->users->find($id);
+
+            $data = [
+                'nik'      => $user['nik'],
+                'role'     => $user['role'] ?? '-',
+                'codeUser' => $user['code_user']
+            ];
+
+            return $this->response->setJSON([
+                'status' => true,
+                'data'   => $data
+            ]);
+        }
+        catch (\Exception $e)
+        {
+            return $this->response->setJSON([
+                'status' => false,
+                'error'  => $e->getMessage()
+            ]);
         }
     }
 }

@@ -31,12 +31,7 @@
                     <div class="row mb-3">
                         <label for="inputText" class="col-sm-2 col-form-label">Role</label>
                         <div class="col-sm-10">
-                            <select class="form-control" id="role" name="role">
-                                <option value="" disabled selected>Pilih Role</option>
-                                <?php foreach($jabatan as $jabatan) : ?>
-                                    <option value="<?=$jabatan['id']?>"><?=$jabatan['name']?></option>
-                                <?php endforeach;?>
-                            </select>
+                            <input type="text" class="form-control" id="role" name="role" />
                         </div>
                     </div>
                 </div>

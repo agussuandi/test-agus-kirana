@@ -58,6 +58,7 @@ class KaryawanController extends BaseController
         {
             $data = [
                 'user_id'    => $this->request->getPost('user'),
+                'jabatan_id' => $this->request->getPost('jabatan'),
                 'gender'     => $this->request->getPost('gender'),
                 'created_at' => date('Y-m-d H:i:s')
             ];
@@ -77,7 +78,7 @@ class KaryawanController extends BaseController
         {
             $karyawan = $this->karyawan->find($id);
             $user = $this->karyawan::getUser($karyawan['user_id']);
-            $jabatan = \App\Models\Users\UsersModel::getRole($user['role_id']);
+            $jabatan = \App\Models\Karyawan\KaryawanModel::getJabatan($karyawan['jabatan_id']);
 
             return view("{$this->prefixView}/detail", [
                 'user'     => $user,
@@ -97,17 +98,47 @@ class KaryawanController extends BaseController
         {
             $karyawan = $this->karyawan->find($id);
             $user = $this->karyawan::getUser($karyawan['user_id']);
-            $jabatan = \App\Models\Users\UsersModel::getRole($user['role_id']);
 
             return view("{$this->prefixView}/update", [
                 'user'     => $user,
-                'jabatan'  => $jabatan,
+                'jabatan'  => $this->jabatan->findAll(),
                 'karyawan' => $karyawan
             ]);
         }
         catch (\Throwable $th)
         {
             print_r($th->getMessage()); die();
+        }
+    }
+
+    public function update($id)
+    {
+        try
+        {
+            $data = [
+                'gender'     => $this->request->getPost('gender'),
+                'jabatan_id' => $this->request->getPost('jabatan')
+            ];
+
+            $this->karyawan->update($id, $data);
+            return redirect()->to(base_url('karyawan'))->with('success', 'Berhasil mengubah data');
+        }
+        catch (\Throwable $th)
+        {
+            return redirect()->to(base_url('karyawan'))->with('warning', 'Gagal mengubah data');
+        }
+    }
+
+    public function destroy($id)
+    {
+        try
+        {
+            $this->karyawan->delete($id);
+            return redirect()->to(base_url('karyawan'))->with('success', 'Berhasil menghapus data');
+        }
+        catch (\Throwable $th)
+        {
+            return redirect()->to(base_url('karyawan'))->with('warning', 'Gagal menghapus data');
         }
     }
 }

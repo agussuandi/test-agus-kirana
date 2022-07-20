@@ -35,7 +35,7 @@
                                                 <td><?= $user['code_user'] ?></td>
                                                 <td><?= $user['nik'] ?></td>
                                                 <td><?= $user['username'] ?></td>
-                                                <td><?= \App\Models\Users\UsersModel::getRole($user['role_id']) ?></td>
+                                                <td><?= $user['role'] ?></td>
                                                 <td>
                                                     <a href="<?= base_url("user/{$user['id']}") ?>" data-bs-toggle="tooltip" data-bs-placement="top" title="View User" data-bs-original-title="View User">
                                                         <i class="bi bi-eye"></i>

@@ -46,6 +46,7 @@
     <script src="<?= base_url('assets/vendor/tinymce/tinymce.min.js') ?>"></script>
     <script src="<?= base_url('assets/vendor/php-email-form/validate.js') ?>"></script>
 
+    <script src="<?= base_url('assets/js/custom.js') ?>"></script>
     <script src="<?= base_url('assets/js/main.js') ?>"></script>
 
 </body>

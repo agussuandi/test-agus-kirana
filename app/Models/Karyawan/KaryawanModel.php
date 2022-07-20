@@ -5,6 +5,7 @@ namespace App\Models\Karyawan;
 use CodeIgniter\Model;
 
 use App\Models\Users\UsersModel;
+use App\Models\Jabatan\JabatanModel;
 
 class KaryawanModel extends Model
 {
@@ -15,7 +16,7 @@ class KaryawanModel extends Model
     protected $useAutoIncrement = true;
     protected $returnType     = 'array';
     
-    protected $allowedFields = ['user_id', 'gender'];
+    protected $allowedFields = ['user_id', 'gender', 'jabatan_id', 'created_at'];
 
     public static function getUser($id)
     {
@@ -23,5 +24,13 @@ class KaryawanModel extends Model
         $user = $user->find($id);
 
         return $user ?? false;
+    }
+
+    public static function getJabatan($id): string
+    {
+        $jabatan = new JabatanModel();
+        $jabatan = $jabatan->find($id);
+
+        return $jabatan['name'] ?? '-';
     }
 }

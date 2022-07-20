@@ -38,7 +38,7 @@
                     <div class="row mb-3">
                         <label for="inputText" class="col-sm-2 col-form-label">Role</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" disabled value="<?= \App\Models\Users\UsersModel::getRole($user['role_id']) ?>" />
+                            <input type="text" class="form-control" disabled value="<?=$user['role']?>" />
                         </div>
                     </div>
                 </div>

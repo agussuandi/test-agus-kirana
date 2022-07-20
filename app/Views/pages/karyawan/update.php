@@ -12,7 +12,7 @@
         </nav>
     </div>
     <section class="section">
-        <form action="<?= base_url("/karyawan/{$user['id']}") ?>" method="POST">
+        <form action="<?= base_url("/karyawan/{$karyawan['id']}") ?>" method="POST">
             <input type="hidden" name="_method" value="PUT" />
             <div class="card">
                 <div class="card-body">
@@ -32,13 +32,22 @@
                     <div class="row mb-3">
                         <label for="inputText" class="col-sm-2 col-form-label">Jabatan</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" disabled value="<?=$jabatan?>" />
+                            <select class="form-control" id="jabatan" name="jabatan">
+                                <option value="" disabled selected>Pilih Jabatan</option>
+                                <?php foreach($jabatan as $valJabatan) : ?>
+                                    <option value="<?=$valJabatan['id']?>" <?=$karyawan['jabatan_id'] === $valJabatan['id'] ? 'selected' : ''?>><?=$valJabatan['name']?></option>
+                                <?php endforeach;?>
+                            </select>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="inputText" class="col-sm-2 col-form-label">Gender</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" disabled value="<?=$karyawan['gender'] === 'L' ? 'Laki - Laki' : 'Perempuan'?>" />
+                            <select class="form-control" id="gender" name="gender">
+                                <option value="" disabled selected>Pilih Gender</option>
+                                <option value="L" <?=$karyawan['gender'] === 'L' ? 'selected' : ''?>>Laki - Laki</option>
+                                <option value="P" <?=$karyawan['gender'] === 'P' ? 'selected' : ''?>>Perempuan</option>
+                            </select>
                         </div>
                     </div>
                 </div>

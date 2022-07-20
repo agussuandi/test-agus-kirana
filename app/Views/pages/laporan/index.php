@@ -3,10 +3,10 @@
 <?= $this->section('content') ?>
 
     <div class="pagetitle">
-        <h1>Karyawan</h1>
+        <h1>Laporan</h1>
         <nav class="d-flex justify-content-end">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active">Karyawan</li>
+                <li class="breadcrumb-item active">Laporan</li>
             </ol>
         </nav>
     </div>
@@ -15,8 +15,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Karyawan</h5>
-                        <a href="<?=base_url('/karyawan/create')?>" class="btn btn-primary btn-sm mb-3">Create Karyawan</a>
+                        <h5 class="card-title">Laporan</h5>
                         <div class="table-responsive">
                             <table class="table table-stripped table-bordered">
                                 <thead>
@@ -25,7 +24,7 @@
                                         <th>Nama</th>
                                         <th>Jabatan</th>
                                         <th>Gender</th>
-                                        <th>Action</th>
+                                        <th>Role</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -40,19 +39,12 @@
                                                 <td><?= $user['username'] ?></td>
                                                 <td><?= $jabatan?></td>
                                                 <td><?= $karyawan['gender'] === 'L' ? 'Laki - Laki' : 'Perempuan' ?></td>
-                                                <td>
-                                                    <a href="<?= base_url("karyawan/{$karyawan['id']}") ?>" data-bs-toggle="tooltip" data-bs-placement="top" title="View Karyawan" data-bs-original-title="View Karyawan">
-                                                        <i class="bi bi-eye"></i>
-                                                    </a>
-                                                    <a href="<?= base_url("karyawan/edit/{$karyawan['id']}") ?>" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Karyawan" data-bs-original-title="Edit Karyawan">
-                                                        <i class="bi bi-pencil"></i>
-                                                    </a>
-                                                </td>
+                                                <td><?= $user['role'] ?? '-'?></td>
                                             </tr>
                                         <?php endforeach; ?>
                                     <?php else : ?>
                                         <tr>
-                                            <td colspan="4">No data found</td>
+                                            <td colspan="5">No data found</td>
                                         </tr>
                                     <?php endif; ?>
                                 </tbody>

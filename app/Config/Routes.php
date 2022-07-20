@@ -43,6 +43,7 @@ $routes->get('/user/(:num)', 'User\UserController::show/$1');
 $routes->get('/user/edit/(:num)', 'User\UserController::edit/$1');
 $routes->put('/user/(:num)', 'User\UserController::update/$1');
 $routes->delete('/user/(:num)', 'User\UserController::destroy/$1');
+$routes->get('/userJson/(:num)', 'User\UserController::userJson/$1');
 
 $routes->get('/jabatan', 'Jabatan\JabatanController::index');
 $routes->get('/jabatan/create', 'Jabatan\JabatanController::create');
@@ -57,6 +58,12 @@ $routes->get('/karyawan/create', 'Karyawan\KaryawanController::create');
 $routes->post('/karyawan', 'Karyawan\KaryawanController::store');
 $routes->get('/karyawan/(:num)', 'Karyawan\KaryawanController::show/$1');
 $routes->get('/karyawan/edit/(:num)', 'Karyawan\KaryawanController::edit/$1');
+$routes->put('/karyawan/(:num)', 'Karyawan\KaryawanController::update/$1');
+$routes->delete('/karyawan/(:num)', 'Karyawan\KaryawanController::destroy/$1');
+
+$routes->get('/laporan', 'Laporan\LaporanController::index');
+
+$routes->get('/api/checkServer', 'API\CheckServerController::index');
 
 /*
  * --------------------------------------------------------------------

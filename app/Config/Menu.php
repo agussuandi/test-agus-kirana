@@ -20,14 +20,14 @@ class Menu extends BaseConfig
                 'class' => 'bi bi-person'
             ],
             [
-                'name'  => 'Karyawan',
-                'url'   => '/karyawan',
-                'class' => 'bi bi-file-person'
-            ],
-            [
                 'name'  => 'Jabatan',
                 'url'   => '/jabatan',
                 'class' => 'bi bi-grid'
+            ],
+            [
+                'name'  => 'Karyawan',
+                'url'   => '/karyawan',
+                'class' => 'bi bi-file-person'
             ]
         ];
     }

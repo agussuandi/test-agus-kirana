@@ -15,9 +15,9 @@ class UsersModel extends Model
     protected $useAutoIncrement = true;
     protected $returnType     = 'array';
     
-    protected $allowedFields = ['name', 'username', 'code_user', 'nik', 'role_id'];
+    protected $allowedFields = ['name', 'username', 'code_user', 'nik', 'role'];
 
-    public static function getRole($id): string
+    public static function getJabatan($id): string
     {
         $jabatan = new JabatanModel();
         $jabatan = $jabatan->find($id);
