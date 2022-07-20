@@ -52,6 +52,12 @@ $routes->get('/jabatan/edit/(:num)', 'Jabatan\JabatanController::edit/$1');
 $routes->put('/jabatan/(:num)', 'Jabatan\JabatanController::update/$1');
 $routes->delete('/jabatan/(:num)', 'Jabatan\JabatanController::destroy/$1');
 
+$routes->get('/karyawan', 'Karyawan\KaryawanController::index');
+$routes->get('/karyawan/create', 'Karyawan\KaryawanController::create');
+$routes->post('/karyawan', 'Karyawan\KaryawanController::store');
+$routes->get('/karyawan/(:num)', 'Karyawan\KaryawanController::show/$1');
+$routes->get('/karyawan/edit/(:num)', 'Karyawan\KaryawanController::edit/$1');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
